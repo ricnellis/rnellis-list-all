@@ -1,0 +1,9 @@
+<section class="collections">
+  <h1>Collections</h1>
+
+  <app-list-form (create)="create($event)"></app-list-form>
+
+  <div class="cards">
+    <app-list-card *ngFor="let list of lists" [list]="list"></app-list-card>
+  </div>
+</section>

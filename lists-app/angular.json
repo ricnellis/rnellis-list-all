@@ -95,5 +95,8 @@
       }
     }
   },
-  "defaultProject": "rnellis-list-all"
+  "defaultProject": "rnellis-list-all",
+  "cli": {
+    "analytics": false
+  }
 }

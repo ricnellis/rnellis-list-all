@@ -1,0 +1,9 @@
+<div *ngIf="list; else noList">
+  <h2>{{ list.title }}</h2>
+  <ul>
+    <li *ngFor="let item of list.items">{{ item }}</li>
+  </ul>
+</div>
+<ng-template #noList>
+  <p>List not found.</p>
+</ng-template>

@@ -1,0 +1,6 @@
+<article class="card">
+  <h3>{{ list.title }}</h3>
+  <p>{{ list.items?.length || 0 }} items</p>
+  <a [routerLink]="['/list', list.id]">View</a>
+  <a [routerLink]="['/edit', list.id]">Edit</a>
+</article>

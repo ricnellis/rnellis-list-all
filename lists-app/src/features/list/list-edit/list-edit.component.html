@@ -1,0 +1,13 @@
+<div *ngIf="list; else noList">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label>
+      Title
+      <input formControlName="title" />
+    </label>
+
+    <button type="submit">Save</button>
+  </form>
+</div>
+<ng-template #noList>
+  <p>List not found.</p>
+</ng-template>

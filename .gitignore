@@ -1,0 +1,3 @@
+# Node modules and Angular cache
+node_modules/
+.angular/

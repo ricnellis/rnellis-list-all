@@ -1,7 +1,7 @@
 {
   "name": "Angular (Node)",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
-  "workspaceFolder": "/workspaces/rnellis-list-all/│-1",
+  "workspaceFolder": "/workspaces/rnellis-list-all/lists-app",
   "forwardPorts": [4200],
   "postCreateCommand": "npm ci",
   "customizations": {

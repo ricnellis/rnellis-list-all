@@ -7,4 +7,4 @@ Home of the List All App
 - Start the app inside the project folder with `npm start` (server listens on `0.0.0.0:4200`).
 
 ## Project folder
-- App source: `│-1/` — open that folder in the container or run `cd "│-1" && npm start` locally.
+- App source: `lists-app/` — open that folder in the container or run `cd "lists-app" && npm start` locally.

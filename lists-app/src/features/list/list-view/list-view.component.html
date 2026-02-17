@@ -1,8 +1,33 @@
 <div *ngIf="list; else noList">
   <h2>{{ list.title }}</h2>
-  <ul>
-    <li *ngFor="let item of list.items">{{ item }}</li>
+  <ul class="list-items">
+    <li *ngFor="let item of list.items">
+      <div *ngIf="editingItemId !== item.id; else editTpl" class="item-left">
+        <div>
+          <div class="item-name">{{ item.name }}</div>
+          <div class="muted">Rating: {{ item.rating || '—' }} &middot; {{ item.description || '' }}</div>
+        </div>
+        <div class="item-actions">
+          <button (click)="startEdit(item)">Edit</button>
+          <button (click)="removeItem(item.id)">Delete</button>
+        </div>
+      </div>
+      <ng-template #editTpl>
+        <div class="item-edit">
+          <input [(ngModel)]="editName" name="name-{{item.id}}" placeholder="Name" />
+          <input [(ngModel)]="editRating" name="rating-{{item.id}}" placeholder="Rating" />
+          <input [(ngModel)]="editDescription" name="desc-{{item.id}}" placeholder="Description" />
+          <button (click)="saveEdit()">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      </ng-template>
+    </li>
   </ul>
+
+  <div class="add-item">
+    <input placeholder="New item" [(ngModel)]="newItemName" (keyup.enter)="addItem()" />
+    <button (click)="addItem()">Add</button>
+  </div>
 </div>
 <ng-template #noList>
   <p>List not found.</p>

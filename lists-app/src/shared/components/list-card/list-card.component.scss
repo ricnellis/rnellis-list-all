@@ -1,6 +1,25 @@
 .card {
-  padding: 0.75rem;
-  border: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid rgba(106,0,217,0.12);
+  box-shadow: 0 1px 4px rgba(75,0,130,0.04);
+}
+
+.card h3 {
+  color: var(--purple-700);
+  margin-bottom: 0.4rem;
+  font-size: 1.05rem;
+}
+
+.card p { color: var(--muted); margin: 0.25rem 0 0.8rem; }
+
+.card a {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 6px 10px;
   border-radius: 6px;
-  background: #fff;
+  background: transparent;
+  color: var(--purple-600);
+  font-weight: 600;
 }

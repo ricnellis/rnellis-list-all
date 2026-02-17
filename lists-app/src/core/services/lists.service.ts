@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { List } from '../models/list.model';
+import { List, Item } from '../models/list.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +43,47 @@ export class ListsService {
 
   private generateId(): number {
     return this.lists.length > 0 ? Math.max(...this.lists.map(list => list.id)) + 1 : 1;
+  }
+
+  private generateItemId(list: List): number {
+    return list.items && list.items.length > 0 ? Math.max(...list.items.map(i => i.id)) + 1 : 1;
+  }
+
+  addItem(listId: number, name: string, rating?: string, description?: string): Item | undefined {
+    const list = this.getListById(listId);
+    if (!list) return undefined;
+    const item: Item = { id: this.generateItemId(list), name, rating, description };
+    list.items.push(item);
+    return item;
+  }
+
+  removeItem(listId: number, itemId: number): boolean {
+    const list = this.getListById(listId);
+    if (!list) return false;
+    const idx = list.items.findIndex(i => i.id === itemId);
+    if (idx === -1) return false;
+    list.items.splice(idx, 1);
+    return true;
+  }
+
+  renameItem(listId: number, itemId: number, newName: string): boolean {
+    const list = this.getListById(listId);
+    if (!list) return false;
+    const item = list.items.find(i => i.id === itemId);
+    if (!item) return false;
+    item.name = newName;
+    return true;
+  }
+
+  /** Update item fields (name, rating, description) */
+  updateItem(listId: number, itemId: number, details: { name?: string; rating?: string; description?: string }): boolean {
+    const list = this.getListById(listId);
+    if (!list) return false;
+    const item = list.items.find(i => i.id === itemId);
+    if (!item) return false;
+    if (details.name !== undefined) item.name = details.name;
+    if (details.rating !== undefined) item.rating = details.rating;
+    if (details.description !== undefined) item.description = details.description;
+    return true;
   }
 }

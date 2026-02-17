@@ -1,9 +1,12 @@
 /* Styles specific to the root component */ 
 
 h1 {
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 2.2rem;
+    color: var(--purple-700);
 }
+
+.brand { color: inherit; text-decoration: none; padding:4px 6px; border-radius:6px; }
+.brand:hover { background: rgba(106,0,217,0.06); }
 
 .container {
     padding: 20px;

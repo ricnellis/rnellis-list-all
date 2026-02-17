@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ListsService } from '../../../core/services/lists.service';
-import { List } from '../../../core/models/list.model';
+import { List, Item } from '../../../core/models/list.model';
 
 @Component({
   selector: 'app-list-edit',
@@ -32,4 +32,6 @@ export class ListEditComponent implements OnInit {
     this.lists.updateList(updated);
     this.router.navigate(['/']);
   }
+
+  // Item editing moved to list-view; keep list save as-is
 }

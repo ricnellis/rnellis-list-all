@@ -1,9 +1,21 @@
-/* Global styles for the Angular application */ 
+/* Global styles for the Angular application (purple theme) */
+
+:root {
+    --bg: #f6f2fb;
+    --surface: #ffffff;
+    --text: #2b2b2b;
+    --muted: #6b617a;
+    --purple-700: #4b0082;
+    --purple-600: #6a00d9;
+    --purple-400: #9b6cff;
+    --accent: var(--purple-600);
+}
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -13,28 +25,33 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: var(--accent);
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
 }
 
 .button {
-    padding: 10px 15px;
+    padding: 8px 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .button-primary {
-    background-color: #007bff;
-    color: white;
+    background: linear-gradient(180deg, var(--purple-600), var(--purple-700));
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(106,0,217,0.18);
 }
 
 .button-secondary {
-    background-color: #6c757d;
-    color: white;
+    background: var(--purple-400);
+    color: #fff;
 }
+
+/* utility */
+.muted { color: var(--muted); }

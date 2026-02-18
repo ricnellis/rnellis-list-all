@@ -1,11 +1,21 @@
 <div *ngIf="list; else noList">
   <h2>{{ list.title }}</h2>
+  <div class="sort-controls">
+    <label>Sort by:
+      <select [(ngModel)]="sortBy">
+        <option value="title">Title</option>
+        <option value="rating">Rating</option>
+        <option value="date">Date</option>
+      </select>
+    </label>
+    <button (click)="toggleSortDir()">{{ sortDir === 'asc' ? 'Asc' : 'Desc' }}</button>
+  </div>
   <ul class="list-items">
-    <li *ngFor="let item of list.items">
+    <li *ngFor="let item of sortedItems">
       <div *ngIf="editingItemId !== item.id; else editTpl" class="item-left">
         <div>
           <div class="item-name">{{ item.name }}</div>
-          <div class="muted">Rating: {{ item.rating || '—' }} &middot; {{ item.description || '' }}</div>
+          <div class="muted">Rating: {{ item.rating || '—' }} &middot; {{ item.description || '' }} &middot; Date: {{ item.date || '—' }}</div>
         </div>
         <div class="item-actions">
           <button (click)="startEdit(item)">Edit</button>
@@ -17,6 +27,7 @@
           <input [(ngModel)]="editName" name="name-{{item.id}}" placeholder="Name" />
           <input [(ngModel)]="editRating" name="rating-{{item.id}}" placeholder="Rating" />
           <input [(ngModel)]="editDescription" name="desc-{{item.id}}" placeholder="Description" />
+          <input type="date" [(ngModel)]="editDate" name="date-{{item.id}}" />
           <button (click)="saveEdit()">Save</button>
           <button (click)="cancelEdit()">Cancel</button>
         </div>

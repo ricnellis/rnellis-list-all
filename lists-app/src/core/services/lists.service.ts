@@ -49,10 +49,11 @@ export class ListsService {
     return list.items && list.items.length > 0 ? Math.max(...list.items.map(i => i.id)) + 1 : 1;
   }
 
-  addItem(listId: number, name: string, rating?: string, description?: string): Item | undefined {
+  addItem(listId: number, name: string, rating?: string, description?: string, date?: string): Item | undefined {
     const list = this.getListById(listId);
     if (!list) return undefined;
-    const item: Item = { id: this.generateItemId(list), name, rating, description };
+    const isoDate = date || new Date().toISOString().split('T')[0];
+    const item: Item = { id: this.generateItemId(list), name, rating, description, date: isoDate };
     list.items.push(item);
     return item;
   }
@@ -76,7 +77,7 @@ export class ListsService {
   }
 
   /** Update item fields (name, rating, description) */
-  updateItem(listId: number, itemId: number, details: { name?: string; rating?: string; description?: string }): boolean {
+  updateItem(listId: number, itemId: number, details: { name?: string; rating?: string; description?: string; date?: string }): boolean {
     const list = this.getListById(listId);
     if (!list) return false;
     const item = list.items.find(i => i.id === itemId);
@@ -84,6 +85,7 @@ export class ListsService {
     if (details.name !== undefined) item.name = details.name;
     if (details.rating !== undefined) item.rating = details.rating;
     if (details.description !== undefined) item.description = details.description;
+    if (details.date !== undefined) item.date = details.date;
     return true;
   }
 }

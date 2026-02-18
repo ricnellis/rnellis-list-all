@@ -3,6 +3,7 @@ export interface Item {
     name: string;
     rating?: string;
     description?: string;
+    date?: string;
 }
 
 export class List {
